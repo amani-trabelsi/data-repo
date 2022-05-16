@@ -1,0 +1,64 @@
+ALGORITHM set 
+//solution 1
+VAR
+    tab1,tab2:table of integer[10];
+    sd2,sd1,s:integer:=0;
+    
+    i,j:integer:=0;
+    test:BOOLEAN:=false;
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+
+BEGIN
+
+FOR i FROM 0 TO tab1.length STEP 1  DO
+    REPEAT
+    IF (tab1[i]<>tab2[j]) THEN
+        test:=false;
+    ELSE
+        test:=true;
+    END_IF
+    j++;
+
+    UNTIL (j=tab2.length OR test=true )
+    IF ( j=tab2.length) THEN
+
+        sd1:=sd1+tab1[i];
+
+    END_IF
+
+END_FOR
+
+
+FOR i FROM 0 TO tab2.length STEP 1  DO
+    REPEAT
+    IF (tab1[i]<>tab2[j]) THEN
+        test:=false;
+    ELSE
+        test:=true;
+    END_IF
+    j++;
+
+    UNTIL (j=tab1.length OR test=true )
+    IF ( j=tab1.length) THEN
+
+        sd2:=sd2+tab2[i];
+
+    END_IF
+
+END_FOR
+s:=sd1+sd2;
+
+
+
+FOR i FROM 0 TO tab1.length STEP 1  DO
+    FOR j FROM 0 TO set2.length STEP 1  DO
+
+      IF (tab1[i]==tab2[j]) THEN
+       sc:= sc+tab1[i] +tab2[j];
+
+     END_IF
+     
+    END_FOR
+END_FOR
+write(sc);
+END
